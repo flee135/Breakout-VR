@@ -45,9 +45,11 @@ public class HandMenuScript : MonoBehaviour {
         }
 
         Vector position = rightHand.PalmPosition;
+        Color myRed = new Color(position.y/300, 0, 0);
+
         if (position.z < 0) // Top
         {
-            breakoutText.color = Color.red;
+            breakoutText.color = myRed;
             exitText.color = Color.black;
 
             if (rightHand.PalmPosition.y > 300)
@@ -58,7 +60,7 @@ public class HandMenuScript : MonoBehaviour {
         else
         {
             breakoutText.color = Color.black;
-            exitText.color = Color.red;
+            exitText.color = myRed;
 
             if (rightHand.PalmPosition.y > 300)
             {
