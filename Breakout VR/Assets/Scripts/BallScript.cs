@@ -9,7 +9,7 @@ public class BallScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
-		rb.AddForce(Vector3.up * thrust );
+		rb.AddForce(new Vector3(1, 1, 1) * thrust );
 	}
 	
 	// Update is called once per frame
