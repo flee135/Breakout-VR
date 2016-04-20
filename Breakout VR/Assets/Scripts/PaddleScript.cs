@@ -39,13 +39,13 @@ public class PaddleScript : MonoBehaviour {
         if (rigidHand.gameObject.activeSelf)
         {
             Vector3 pos = transform.FindChild("RigidRoundHand_R").FindChild("palm").position;
-            Vector3 paddlePos = new Vector3(pos.x * 25, pos.y * 12.5f, -5f);
+            Vector3 paddlePos = new Vector3(pos.x * 25, pos.y * 12.5f, -10.25f);
             paddle.transform.position = paddlePos;
         }
         else
         {
             Vector3 pos = transform.FindChild("RigidRoundHand_L").FindChild("palm").position;
-            Vector3 paddlePos = new Vector3(pos.x * 25, pos.y * 12.5f, -5f);
+            Vector3 paddlePos = new Vector3(pos.x * 25, pos.y * 12.5f, -10.25f);
             paddle.transform.position = paddlePos;
         }
     }
