@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallScript : MonoBehaviour
-{
+public class BallScript : MonoBehaviour {
 
-    public float thrust;
-    public Rigidbody rb;
+	private Rigidbody rb;
 
-    // Use this for initialization
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(1, 1, 1) * thrust);
-    }
+	// Use this for initialization
+	void Start () {
+		rb = GetComponent<Rigidbody>();
+		rb.AddForce(new Vector3(1.0f, 0.0f, 0.0f) * 100.0f);
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+	void OnCollisionEnter(Collision other) {
+
+		if (other.gameObject.CompareTag ("Block")) {
+
+			Destroy (other.gameObject);
+
+		}
+
+	}
+
 }
