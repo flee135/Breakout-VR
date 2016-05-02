@@ -4,6 +4,13 @@ using System.Collections;
 public class SceneController : MonoBehaviour {
 
 	public GameObject bluePrefab, greenPrefab, yellowPrefab, orangePrefab, redPrefab;
+    public GameObject ballPrefab;
+
+    private GameObject ball;
+    private float minYRange = -1f;
+    private float maxYRange = 2f;
+    private float minXRange = -5f;
+    private float maxXRange = 5f;
 
 	void Start () {
 
@@ -21,6 +28,25 @@ public class SceneController : MonoBehaviour {
 
 		}
 
+        ball = (GameObject)Instantiate(ballPrefab, new Vector3(Random.value * 10 - 5, Random.value * 3 - 1, -6), Quaternion.identity);
+
+        StartCoroutine(WaitToStart());
+
 	}
 
+    void Update()
+    {
+        if (ball.transform.position.z < -20 || Mathf.Abs(ball.transform.position.x) > 15 || Mathf.Abs(ball.transform.position.y) > 10)
+        {
+            ball.GetComponent<BallScript>().ResetBall();
+            StartCoroutine(WaitToStart());
+        }
+    }
+
+
+    public IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(3);
+        ball.GetComponent<BallScript>().MoveBall();
+    }
 }

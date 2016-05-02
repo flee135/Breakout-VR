@@ -9,7 +9,7 @@ public class BallScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
-		rb.AddForce(new Vector3(1.0f, 1.0f, 1.0f) * thrust);
+		//rb.AddForce(new Vector3(1.0f, 1.0f, 1.0f) * thrust);
 	}
 
 	void OnCollisionEnter(Collision other) {
@@ -21,5 +21,17 @@ public class BallScript : MonoBehaviour {
 		}
 
 	}
+
+    public void ResetBall()
+    {
+        transform.position = new Vector3(Random.value * 10 - 5, Random.value * 3 - 1, -6);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
+    public void MoveBall()
+    {
+        rb.AddForce(new Vector3(1.0f, 1.0f, 1.0f) * thrust);
+    }
 
 }
