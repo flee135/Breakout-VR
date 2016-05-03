@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SceneController : MonoBehaviour {
 
+	public Text countDown;
 	public GameObject bluePrefab, greenPrefab, yellowPrefab, orangePrefab, redPrefab;
     public GameObject ballPrefab;
 
@@ -46,7 +48,13 @@ public class SceneController : MonoBehaviour {
 
     public IEnumerator WaitToStart()
     {
-        yield return new WaitForSeconds(3);
+		countDown.text = "3";
+        yield return new WaitForSeconds(1);
+		countDown.text = "2";
+		yield return new WaitForSeconds(1);
+		countDown.text = "1";
+		yield return new WaitForSeconds(1);
         ball.GetComponent<BallScript>().MoveBall();
+		countDown.text = "";
     }
 }
