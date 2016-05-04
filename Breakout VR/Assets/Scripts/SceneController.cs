@@ -4,15 +4,14 @@ using System.Collections;
 
 public class SceneController : MonoBehaviour {
 
-	public Text countDown;
+	public Text countDown, deaths;
 	public GameObject bluePrefab, greenPrefab, yellowPrefab, orangePrefab, redPrefab;
-    public GameObject ballPrefab;
+    public GameObject ballPrefab, heartPrefab;
 
     private GameObject ball;
-    private float minYRange = -1f;
-    private float maxYRange = 2f;
-    private float minXRange = -5f;
-    private float maxXRange = 5f;
+	private int deathCount = 0;
+    private float minYRange = -1f, maxYRange = 2f, minXRange = -5f, maxXRange = 5f, heartSpeed = 5.0f;
+
 
 	void Start () {
 
@@ -31,6 +30,8 @@ public class SceneController : MonoBehaviour {
 		}
 
         ball = (GameObject)Instantiate(ballPrefab, new Vector3(Random.value * 10 - 5, Random.value * 3 - 1, -6), Quaternion.identity);
+		heartPrefab.transform.Rotate (new Vector3 (0.0f, 45.0f, 0.0f));
+		deaths.text = deathCount.ToString ();
 
         StartCoroutine(WaitToStart());
 
@@ -38,9 +39,11 @@ public class SceneController : MonoBehaviour {
 
     void Update()
     {
+		heartPrefab.transform.Rotate (new Vector3 (0.0f, 0.0f, heartSpeed));
         if (ball.transform.position.z < -20 || Mathf.Abs(ball.transform.position.x) > 15 || Mathf.Abs(ball.transform.position.y) > 10)
         {
             ball.GetComponent<BallScript>().ResetBall();
+			deaths.text = (++deathCount).ToString();
             StartCoroutine(WaitToStart());
         }
     }
