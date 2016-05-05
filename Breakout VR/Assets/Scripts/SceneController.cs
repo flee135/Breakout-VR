@@ -14,7 +14,6 @@ public class SceneController : MonoBehaviour {
 	private int deathCount = 0;
     private float minYRange = -1f, maxYRange = 2f, minXRange = -5f, maxXRange = 5f, heartSpeed = 5.0f;
 
-
 	void Start () {
 
 		for (int i = -4; i <= 4; i++) {
@@ -28,7 +27,6 @@ public class SceneController : MonoBehaviour {
 				Instantiate (bluePrefab, new Vector3 (2.0f * i, j * 2, 7.0f), Quaternion.identity);
 
 			}
-
 		}
 
         ball = (GameObject)Instantiate(ballPrefab, new Vector3(Random.value * 10 - 5, Random.value * 3 - 1, -6), Quaternion.identity);
