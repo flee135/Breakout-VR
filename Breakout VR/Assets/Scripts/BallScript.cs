@@ -6,19 +6,31 @@ public class BallScript : MonoBehaviour {
 	private Rigidbody rb;
     public float thrust;
 
+    public AudioClip blockAudio;
+    public AudioClip boundaryAudio;
+    public AudioClip paddleAudio;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
-		//rb.AddForce(new Vector3(1.0f, 1.0f, 1.0f) * thrust);
 	}
 
 	void OnCollisionEnter(Collision other) {
 
 		if (other.gameObject.CompareTag ("Block")) {
-
 			Destroy (other.gameObject);
-
+            AudioSource.PlayClipAtPoint(blockAudio, gameObject.transform.position);
 		}
+
+        if (other.gameObject.CompareTag("Boundary") || other.gameObject.CompareTag("ForceField"))
+        {
+            AudioSource.PlayClipAtPoint(boundaryAudio, gameObject.transform.position);
+        }
+
+        if (other.gameObject.name.Equals("Paddle"))
+        {
+            AudioSource.PlayClipAtPoint(paddleAudio, gameObject.transform.position);
+        }
 
 	}
 
