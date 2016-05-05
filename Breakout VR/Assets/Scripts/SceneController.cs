@@ -7,6 +7,8 @@ public class SceneController : MonoBehaviour {
 	public Text countDown, deaths;
 	public GameObject bluePrefab, greenPrefab, yellowPrefab, orangePrefab, redPrefab;
     public GameObject ballPrefab, heartPrefab;
+    public AudioClip countdownStart;
+    public AudioClip countdownEnd;
 
     private GameObject ball;
 	private int deathCount = 0;
@@ -19,11 +21,11 @@ public class SceneController : MonoBehaviour {
 
 			for (int j = -1; j <= 2; j++) {
 
-				//Instantiate (bluePrefab, new Vector3 (2.0f * i, j * 2, -6.0f), Quaternion.identity);
-				//Instantiate (greenPrefab, new Vector3 (2.0f * i, j * 2, -4.0f), Quaternion.identity);
-				//Instantiate (yellowPrefab, new Vector3 (2.0f * i, j * 2, -2.0f), Quaternion.identity);
-				Instantiate (orangePrefab, new Vector3 (2.0f * i, j * 2, 0.0f), Quaternion.identity);
-				Instantiate (redPrefab, new Vector3 (2.0f * i, j * 2, 2.0f), Quaternion.identity);
+				//Instantiate (bluePrefab, new Vector3 (2.0f * i, j * 2, -1.0f), Quaternion.identity);
+				//Instantiate (greenPrefab, new Vector3 (2.0f * i, j * 2, 1.0f), Quaternion.identity);
+				//Instantiate (yellowPrefab, new Vector3 (2.0f * i, j * 2, 3.0f), Quaternion.identity);
+				Instantiate (orangePrefab, new Vector3 (2.0f * i, j * 2, 5.0f), Quaternion.identity);
+				Instantiate (bluePrefab, new Vector3 (2.0f * i, j * 2, 7.0f), Quaternion.identity);
 
 			}
 
@@ -52,12 +54,16 @@ public class SceneController : MonoBehaviour {
     public IEnumerator WaitToStart()
     {
 		countDown.text = "3";
+        AudioSource.PlayClipAtPoint(countdownStart, new Vector3(0, 0, 0));
         yield return new WaitForSeconds(1);
-		countDown.text = "2";
+        countDown.text = "2";
+        AudioSource.PlayClipAtPoint(countdownStart, new Vector3(0, 0, 0));
 		yield return new WaitForSeconds(1);
-		countDown.text = "1";
+        countDown.text = "1";
+        AudioSource.PlayClipAtPoint(countdownStart, new Vector3(0, 0, 0));
 		yield return new WaitForSeconds(1);
         ball.GetComponent<BallScript>().MoveBall();
-		countDown.text = "";
+        countDown.text = "";
+        AudioSource.PlayClipAtPoint(countdownEnd, new Vector3(0, 0, 0));
     }
 }
