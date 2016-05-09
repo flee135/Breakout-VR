@@ -5,10 +5,10 @@ using Leap;
 
 public class PaddleScript : MonoBehaviour {
 
-    private float MAX_X = 11f;
-    private float MIN_X = -11f;
-    private float MAX_Y = 6f;
-    private float MIN_Y = -4f;
+    private float MAX_X = 11.5f;
+    private float MIN_X = -11.5f;
+    private float MAX_Y = 7f;
+    private float MIN_Y = -5f;
 
     public GameObject paddle;
 

@@ -29,6 +29,28 @@ public class SceneController : MonoBehaviour {
 			}
 		}
 
+        for (int i = -4; i <= -3; i++)
+        {
+            for (int j = 0; j <= 1; j++)
+            {
+                for (int k = -1; k <= 1; k += 2)
+                {
+                    Instantiate(greenPrefab, new Vector3(2.0f * i, j * 2, k-1f), Quaternion.identity);
+                }
+            }
+        }
+
+        for (int i = 3; i <= 4; i++)
+        {
+            for (int j = 0; j <= 1; j++)
+            {
+                for (int k = -1; k <= 1; k += 2)
+                {
+                    Instantiate(greenPrefab, new Vector3(2.0f * i, j * 2, k-1f), Quaternion.identity);
+                }
+            }
+        }
+
         ball = (GameObject)Instantiate(ballPrefab, new Vector3(Random.value * 10 - 5, Random.value * 3 - 1, -6), Quaternion.identity);
 		heartPrefab.transform.Rotate (new Vector3 (0.0f, 45.0f, 0.0f));
 		deaths.text = deathCount.ToString ();
